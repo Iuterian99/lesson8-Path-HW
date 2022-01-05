@@ -56,14 +56,20 @@ const server = http.createServer((req, res) => {
     }
   }
 
-  fs.open("./data/salom.js", "w", (err) => {
-    if (err) throw err;
-    console.log("salom.js file ochildi!");
-  });
+  // fs.open("./data/salom.js", "w", (err) => {
+  //   if (err) throw err;
+  //   console.log("salom.js file ochildi!");
+  // });
 
   if (req.method == "PUT") {
     if (req.url.substring(1, 11) == "updateUser") {
       const userID = req.url.split("/")[req.url.split("/").length - 1];
+      console.log(userID);
+
+      // for await(let user of req){
+
+      // }
+      res.end("ok");
     }
   }
 });
