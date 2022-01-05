@@ -66,9 +66,23 @@ const server = http.createServer((req, res) => {
       const userID = req.url.split("/")[req.url.split("/").length - 1];
       console.log(userID);
 
-      // for await(let user of req){
+      for await(let user of req){
+        fs.readFile("./data/data.json", (err, data) => {
+          const parsed = JSON.parse(user);
 
-      // }
+          let array = JSON.parse(data);
+
+          let oldUser = array.filter(e => e.id == userID ? e.name = parsed.name : e);
+
+          fs.writeFile("./data/data.js", JSON.stringify(oldUser), (err) =>{
+            if(err) throw err;
+            console.log("updated");
+            
+          })
+        })
+
+
+      }
       res.end("ok");
     }
   }
